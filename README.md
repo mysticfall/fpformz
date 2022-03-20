@@ -1,6 +1,5 @@
 [![License: MIT][license_badge]][license_link]
 [![ci][ci_badge]][ci_link]
-[![coverage][coverage_badge]][ci_link]
 [![pub package][pub_badge]][pub_link]
 
 # FPFormz
@@ -185,9 +184,9 @@ You can find more code examples in our [test cases](https://github.com/mysticfal
 
 [license_link]: https://opensource.org/licenses/MIT
 
-[ci_badge]: https://github.com/mysticfall/fpformz/actions/workflows/main.yaml/badge.svg
-
 [ci_link]: https://github.com/mysticfall/fpformz/actions
+
+[ci_badge]: https://github.com/mysticfall/fpformz/actions/workflows/main.yml/badge.svg
 
 [pub_badge]: https://img.shields.io/pub/v/fpformz.svg
 
