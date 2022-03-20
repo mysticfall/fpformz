@@ -19,9 +19,6 @@ jobs:
       - name: Install Dependencies
         run: dart pub get
 
-      - name: Format Source
-        run: dart format --set-exit-if-changed .
-
       - name: Analyse Code
         run: dart analyze --fatal-infos --fatal-warnings .
 
