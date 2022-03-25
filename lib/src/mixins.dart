@@ -41,11 +41,29 @@ mixin StringShorterThan<V> on FormInput<V, String, ValidationError> {
 }
 
 @immutable
-mixin EmailString<V> on FormInput<V, String, ValidationError> {
+mixin StringMatchingPattern<V> on FormInput<V, String, ValidationError> {
+  RegExp get pattern;
+
+  ValidationError get whenInvalid =>
+      ValidationError(name, '$name is not a valid value.');
+
+  @override
+  Either<ValidationError, V> validate(String value) => pattern.hasMatch(value)
+      ? super.validate(value)
+      : Either.left(whenInvalid);
+}
+
+@immutable
+mixin EmailString<V> on FormInput<V, String, ValidationError>
+    implements StringMatchingPattern<V> {
   // See: https://html.spec.whatwg.org/multipage/input.html#e-mail-state-%28type=email%29
   static final _pattern = RegExp(
       r"^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
 
+  @override
+  RegExp get pattern => _pattern;
+
+  @override
   ValidationError get whenInvalid =>
       ValidationError(name, 'Value is not a valid email address.');
 
