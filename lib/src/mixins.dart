@@ -7,23 +7,24 @@ import 'validate.dart';
 
 @immutable
 mixin NonEmptyString<V> on FormInput<V, String, ValidationError> {
-  ValidationError get whenEmpty => ValidationError(name, 'Please enter $name.');
+  ValidationError whenEmpty(String value) =>
+      ValidationError(name, 'Please enter $name.');
 
   @override
   Either<ValidationError, V> validate(String value) =>
-      value.isEmpty ? Either.left(whenEmpty) : super.validate(value);
+      value.isEmpty ? Either.left(whenEmpty(value)) : super.validate(value);
 }
 
 @immutable
 mixin StringLongerThan<V> on FormInput<V, String, ValidationError> {
   int get minLength;
 
-  ValidationError get whenTooShort => ValidationError(
+  ValidationError whenTooShort(String value) => ValidationError(
       name, '${name.capitalise()} must be at least $minLength letters long.');
 
   @override
   Either<ValidationError, V> validate(String value) => value.length < minLength
-      ? Either.left(whenTooShort)
+      ? Either.left(whenTooShort(value))
       : super.validate(value);
 }
 
@@ -31,12 +32,12 @@ mixin StringLongerThan<V> on FormInput<V, String, ValidationError> {
 mixin StringShorterThan<V> on FormInput<V, String, ValidationError> {
   int get maxLength;
 
-  ValidationError get whenTooLong => ValidationError(name,
+  ValidationError whenTooLong(String value) => ValidationError(name,
       '${name.capitalise()} must be no longer than $maxLength letters long.');
 
   @override
   Either<ValidationError, V> validate(String value) => value.length > maxLength
-      ? Either.left(whenTooLong)
+      ? Either.left(whenTooLong(value))
       : super.validate(value);
 }
 
@@ -44,13 +45,13 @@ mixin StringShorterThan<V> on FormInput<V, String, ValidationError> {
 mixin StringMatchingPattern<V> on FormInput<V, String, ValidationError> {
   RegExp get pattern;
 
-  ValidationError get whenInvalid =>
-      ValidationError(name, '$name is not a valid value.');
+  ValidationError whenInvalid(String value) =>
+      ValidationError(name, '"$value" is not a valid value.');
 
   @override
   Either<ValidationError, V> validate(String value) => pattern.hasMatch(value)
       ? super.validate(value)
-      : Either.left(whenInvalid);
+      : Either.left(whenInvalid(value));
 }
 
 @immutable
@@ -64,11 +65,11 @@ mixin EmailString<V> on FormInput<V, String, ValidationError>
   RegExp get pattern => _pattern;
 
   @override
-  ValidationError get whenInvalid =>
-      ValidationError(name, 'Value is not a valid email address.');
+  ValidationError whenInvalid(String value) =>
+      ValidationError(name, '"$value" is not a valid email address.');
 
   @override
   Either<ValidationError, V> validate(String value) => _pattern.hasMatch(value)
       ? super.validate(value)
-      : Either.left(whenInvalid);
+      : Either.left(whenInvalid(value));
 }

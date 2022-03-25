@@ -91,7 +91,7 @@ void main() {
       expect(
           form.result,
           Either.left(
-              ValidationError('email', 'Value is not a valid email address.')));
+              ValidationError('email', '"someone!some.where" is not a valid email address.')));
     });
 
     test("'errors' should return all validation errors of contained inputs",
@@ -102,7 +102,7 @@ void main() {
 
       expect(form.errors, [
         ValidationError('name', 'Please enter name.'),
-        ValidationError('email', 'Value is not a valid email address.')
+        ValidationError('email', '"someone!some.where" is not a valid email address.')
       ]);
     });
 

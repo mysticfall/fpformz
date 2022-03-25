@@ -51,7 +51,7 @@ void main() {
       final input = AlphanumericInput.dirty('id', 'bad!@#id');
 
       expect(input.result,
-          Either.left(ValidationError('id', 'id is not a valid value.')));
+          Either.left(ValidationError('id', '"bad!@#id" is not a valid value.')));
     });
 
     test("should allow overriding 'validate'", () {

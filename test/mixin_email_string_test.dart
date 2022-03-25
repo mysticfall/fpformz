@@ -70,7 +70,7 @@ void main() {
       expect(
           input.result,
           Either.left(
-              ValidationError('email', 'Value is not a valid email address.')));
+              ValidationError('email', '"invalid@@email.address" is not a valid email address.')));
     });
 
     test("should allow overriding 'validate'", () {

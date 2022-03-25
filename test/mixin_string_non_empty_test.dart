@@ -17,7 +17,7 @@ class NameInput extends StringFormInput<String, ValidationError>
   int get maxLength => 20;
 
   @override
-  ValidationError get whenTooLong =>
+  ValidationError whenTooLong(String value) =>
       ValidationError(name, 'Is that even a name?');
 
   @override
