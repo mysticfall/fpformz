@@ -178,7 +178,7 @@ FPFormz also ships with a small collection of ready-to-use mixins like `NonEmpty
 
 ## Additional Information
 
-You can find more code examples in our [test cases](https://github.com/mysticfall/fpformz/test).
+You can find more code examples in our [test cases](https://github.com/mysticfall/fpformz/tree/main/test).
 
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 
