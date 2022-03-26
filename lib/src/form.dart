@@ -1,14 +1,9 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:meta/meta.dart';
 
 import 'input.dart';
 import 'validate.dart';
 
-@immutable
-abstract class Form
-    implements Validatable<Map<String, dynamic>, ValidationError> {
-  const Form();
-
+mixin Form implements Validatable<Map<String, dynamic>, ValidationError> {
   List<FormInput<dynamic, dynamic, ValidationError>> get inputs;
 
   @override

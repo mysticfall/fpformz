@@ -20,7 +20,7 @@ class EmailInput extends StringFormInput<String, ValidationError>
   String convert(String value) => value;
 }
 
-class RegistrationForm extends Form {
+class RegistrationForm with Form {
   final NameInput name;
 
   final EmailInput email;
