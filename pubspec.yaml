@@ -1,6 +1,6 @@
 name: fpformz
 description: Functional input validation library based on Fpdart, which is inspired by Formz.
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/mysticfall/fpformz
 
 environment:
