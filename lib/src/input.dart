@@ -26,10 +26,10 @@ abstract class FormInput<V, I, E extends ValidationError>
   const FormInput._(this.name, this.value, {this.isPristine = true}) : super();
 
   /// Constructor which creates a `pristine` [FormInput] with a given value.
-  const FormInput.pristine(id, value) : this._(id, value);
+  const FormInput.pristine(String id, I value) : this._(id, value);
 
   /// Constructor which creates a `dirty` [FormInput] with a given value.
-  const FormInput.dirty(id, I value) : this._(id, value, isPristine: false);
+  const FormInput.dirty(String id, I value) : this._(id, value, isPristine: false);
 
   final String name;
 
