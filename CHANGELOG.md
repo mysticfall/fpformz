@@ -1,3 +1,7 @@
+## 0.1.3
+
+- Added `GenericRequiredInput` for validating simple object type values.
+
 ## 0.1.2
 
 - Make Form class a mixin to avoid a potential hierarchy conflict.
