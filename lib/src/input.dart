@@ -29,7 +29,8 @@ abstract class FormInput<V, I, E extends ValidationError>
   const FormInput.pristine(String id, I value) : this._(id, value);
 
   /// Constructor which creates a `dirty` [FormInput] with a given value.
-  const FormInput.dirty(String id, I value) : this._(id, value, isPristine: false);
+  const FormInput.dirty(String id, I value)
+      : this._(id, value, isPristine: false);
 
   final String name;
 
