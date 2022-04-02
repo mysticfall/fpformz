@@ -1,6 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:meta/meta.dart';
 
+import 'util.dart';
 import 'validate.dart';
 
 /// {@template form_input}
@@ -88,4 +89,23 @@ abstract class StringFormInput<V, E extends ValidationError>
   const StringFormInput.pristine(id, value) : super.pristine(id, value);
 
   const StringFormInput.dirty(id, value) : super.dirty(id, value);
+}
+
+class GenericRequiredInput<V> extends FormInput<V, V?, ValidationError> {
+  const GenericRequiredInput.pristine(String name, {V? value})
+      : super.pristine(name, value);
+
+  const GenericRequiredInput.dirty(String name, {V? value})
+      : super.dirty(name, value);
+
+  GenericRequiredInput<V> update(V? value) =>
+      GenericRequiredInput.dirty(name, value: value);
+
+  ValidationError whenEmpty(V? value) =>
+      ValidationError(name, '${name.capitalise()} cannot be empty.');
+
+  @override
+  Either<ValidationError, V> validate(V? value) => Either.fromOption(
+      Option.fromNullable(value).filter((t) => t is! Iterable || t.isNotEmpty),
+      () => whenEmpty(value));
 }
