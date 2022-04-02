@@ -139,6 +139,22 @@ void example() {
 }
 ```
 
+`Form.result` returns a map of all validated input values which you can use to invoke a service
+method:
+
+```dart
+void example() {
+  final form = RegistrationForm();
+
+  final params = form.resultOrNull;
+
+  service.register(params[form.email.name], params[form.password.name]);
+
+  // Or even like this, provided that the input names match those of the parameters:  
+  Function.apply(service.register, [], params);
+}
+```
+
 ### Mixins
 
 You can also write reusable validation logic as a mixin:
@@ -178,7 +194,8 @@ FPFormz also ships with a small collection of ready-to-use mixins like `NonEmpty
 
 ## Additional Information
 
-You can find more code examples in our [test cases](https://github.com/mysticfall/fpformz/tree/main/test).
+You can find more code examples in
+our [test cases](https://github.com/mysticfall/fpformz/tree/main/test).
 
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 
