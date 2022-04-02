@@ -146,7 +146,7 @@ method:
 void example() {
   final form = RegistrationForm();
 
-  final params = form.resultOrNull;
+  final params = form.resultOrNull!;
 
   service.register(params[form.email.name], params[form.password.name]);
 
