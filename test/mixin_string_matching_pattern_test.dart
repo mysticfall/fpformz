@@ -4,9 +4,9 @@ import 'package:test/test.dart';
 
 class AlphanumericInput extends StringFormInput<String, ValidationError>
     with StringMatchingPattern, NonEmptyString {
-  const AlphanumericInput.pristine(name, value) : super.pristine(name, value);
+  const AlphanumericInput.pristine(super.name, super.value) : super.pristine();
 
-  const AlphanumericInput.dirty(name, value) : super.dirty(name, value);
+  const AlphanumericInput.dirty(super.name, super.value) : super.dirty();
 
   @override
   RegExp get pattern => RegExp(r'^[a-zA-Z0-9]+$');
@@ -50,8 +50,10 @@ void main() {
         () {
       final input = AlphanumericInput.dirty('id', 'bad!@#id');
 
-      expect(input.result,
-          Either.left(ValidationError('id', '"bad!@#id" is not a valid value.')));
+      expect(
+          input.result,
+          Either.left(
+              ValidationError('id', '"bad!@#id" is not a valid value.')));
     });
 
     test("should allow overriding 'validate'", () {

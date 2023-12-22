@@ -27,7 +27,7 @@ You can install PFFormz by adding the following entry in your `pubsec.yaml`:
 ```yaml
 # pubspec.yaml
 dependencies:
-  fpformz: ^0.1.3
+  fpformz: ^0.1.4
 ```
 
 ## Getting Started

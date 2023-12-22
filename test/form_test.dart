@@ -4,9 +4,9 @@ import 'package:test/test.dart';
 
 class NameInput extends StringFormInput<String, ValidationError>
     with NonEmptyString {
-  const NameInput.pristine(name, value) : super.pristine(name, value);
+  const NameInput.pristine(super.name, super.value) : super.pristine();
 
-  const NameInput.dirty(name, value) : super.dirty(name, value);
+  const NameInput.dirty(super.name, super.value) : super.dirty();
 
   @override
   String convert(String value) => value;
@@ -14,9 +14,9 @@ class NameInput extends StringFormInput<String, ValidationError>
 
 class EmailInput extends StringFormInput<String, ValidationError>
     with EmailString {
-  const EmailInput.pristine(name, value) : super.pristine(name, value);
+  const EmailInput.pristine(super.name, super.value) : super.pristine();
 
-  const EmailInput.dirty(name, value) : super.dirty(name, value);
+  const EmailInput.dirty(super.name, super.value) : super.dirty();
 
   @override
   String convert(String value) => value;
@@ -90,8 +90,8 @@ void main() {
 
       expect(
           form.result,
-          Either.left(
-              ValidationError('email', '"someone!some.where" is not a valid email address.')));
+          Either.left(ValidationError(
+              'email', '"someone!some.where" is not a valid email address.')));
     });
 
     test("'errors' should return all validation errors of contained inputs",
@@ -102,7 +102,8 @@ void main() {
 
       expect(form.errors, [
         ValidationError('name', 'Please enter name.'),
-        ValidationError('email', '"someone!some.where" is not a valid email address.')
+        ValidationError(
+            'email', '"someone!some.where" is not a valid email address.')
       ]);
     });
 
