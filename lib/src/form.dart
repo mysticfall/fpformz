@@ -13,7 +13,7 @@ mixin Form implements Validatable<Map<String, dynamic>, ValidationError> {
   // TODO: Should be simplified once fpdart supports Traverse.
   Either<ValidationError, Map<String, dynamic>> get result => inputs.foldRight(
       Either.of({}),
-      (i, acc) => acc.bind((m) => i.result.match(
+      (acc, i) => acc.bind((m) => i.result.match(
           (l) => Either.left(l), (r) => Either.of(m..addAll({i.name: r})))));
 }
 

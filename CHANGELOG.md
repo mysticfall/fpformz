@@ -1,3 +1,9 @@
+## 0.1.4
+
+- Added compatibility with fpdart 1.1.0
+- Updated other dependencies to latest versions.
+- Updated flutter SDK version compatibility
+
 ## 0.1.3
 
 - Added `GenericRequiredInput` for validating simple object type values.
