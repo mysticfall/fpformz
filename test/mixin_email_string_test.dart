@@ -24,9 +24,9 @@ class Email {
 
 class EmailInput extends StringFormInput<Email, ValidationError>
     with EmailString, NonEmptyString {
-  const EmailInput.pristine(name, value) : super.pristine(name, value);
+  const EmailInput.pristine(super.name, super.value) : super.pristine();
 
-  const EmailInput.dirty(name, value) : super.dirty(name, value);
+  const EmailInput.dirty(super.name, super.value) : super.dirty();
 
   @override
   Either<ValidationError, Email> validate(String value) =>
@@ -69,8 +69,8 @@ void main() {
 
       expect(
           input.result,
-          Either.left(
-              ValidationError('email', '"invalid@@email.address" is not a valid email address.')));
+          Either.left(ValidationError('email',
+              '"invalid@@email.address" is not a valid email address.')));
     });
 
     test("should allow overriding 'validate'", () {

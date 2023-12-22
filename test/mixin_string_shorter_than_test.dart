@@ -4,9 +4,9 @@ import 'package:test/test.dart';
 
 class NameInput extends StringFormInput<String, ValidationError>
     with StringShorterThan, NonEmptyString {
-  const NameInput.pristine(name, value) : super.pristine(name, value);
+  const NameInput.pristine(super.name, super.value) : super.pristine();
 
-  const NameInput.dirty(name, value) : super.dirty(name, value);
+  const NameInput.dirty(super.name, super.value) : super.dirty();
 
   @override
   Either<ValidationError, String> validate(String value) => value.contains(' ')

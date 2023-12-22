@@ -71,9 +71,9 @@ abstract class FormInput<V, I, E extends ValidationError>
 @immutable
 abstract class BaseFormInput<V, I, E extends ValidationError>
     extends FormInput<V, I, E> {
-  const BaseFormInput.pristine(id, value) : super.pristine(id, value);
+  const BaseFormInput.pristine(super.id, super.value) : super.pristine();
 
-  const BaseFormInput.dirty(id, value) : super.dirty(id, value);
+  const BaseFormInput.dirty(super.id, super.value) : super.dirty();
 
   V convert(I value);
 
@@ -86,9 +86,9 @@ abstract class BaseFormInput<V, I, E extends ValidationError>
 @immutable
 abstract class StringFormInput<V, E extends ValidationError>
     extends BaseFormInput<V, String, E> {
-  const StringFormInput.pristine(id, value) : super.pristine(id, value);
+  const StringFormInput.pristine(super.id, super.value) : super.pristine();
 
-  const StringFormInput.dirty(id, value) : super.dirty(id, value);
+  const StringFormInput.dirty(super.id, super.value) : super.dirty();
 }
 
 class GenericRequiredInput<V> extends FormInput<V, V?, ValidationError> {

@@ -3,9 +3,9 @@ import 'package:fpformz/fpformz.dart';
 import 'package:test/test.dart';
 
 class AgeInput extends FormInput<int, String, ValidationError> {
-  const AgeInput.pristine(name, value) : super.pristine(name, value);
+  const AgeInput.pristine(super.name, super.value) : super.pristine();
 
-  const AgeInput.dirty(name, value) : super.dirty(name, value);
+  const AgeInput.dirty(super.name, super.value) : super.dirty();
 
   Either<ValidationError, String> validateIsNonEmpty(String value) =>
       Either.fromPredicate(value, (v) => v.isNotEmpty,
